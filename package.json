@@ -1,0 +1,28 @@
+{
+  "name": "raiden-remake",
+  "version": "1.0.0",
+  "description": "EDA Personal Project - Raiden Game Remake",
+  "main": "p5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rob-dev-builder/raiden-remake.git"
+  },
+  "author": "Robert Fisher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rob-dev-builder/raiden-remake/issues"
+  },
+  "homepage": "https://github.com/rob-dev-builder/raiden-remake#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.6.3"
+  }
+}
