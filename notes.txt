@@ -1,0 +1,13 @@
+Setup,
+1. Copy p5 js folder across
+1. NPM init
+2. Install express
+2. Install tape -dev
+2. Install tap-diff -save-dev
+2. Install nodemon -save-dev
+2. Create Game folder
+3. Setup .gitignore file - ignore p5.js modules
+4. Setup local server
+5. Test  # Up to here
+
+Each object.js file is being referenced in the html file. Would be good if these could be bundled up and referrred to only once.
