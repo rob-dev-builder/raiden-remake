@@ -3,46 +3,72 @@ var flowers = []
 var drops = []
 
 function setup() {
- createCanvas(600, 400)
- ship = new Ship()
- // drop = new Drop(width/2, height/2) // drop starting location
- for (var i = 0; i < 6; i++){ // create an array of flowers
-    flowers[i] = new Flower(i*80+80,60)
+  createCanvas(600, 400)
+  ship = new Ship()
+  for (var i = 0; i < 6; i++) { // create an array of flowers
+    flowers[i] = new Flower(i * 80 + 80, 60)
     // set  width location for flowers
     // the i*80+80 allows the flowers to be evenly spaced out
- }
+  }
 
 }
 
 function draw() {
- background(51)
- ship.show()
+  background(51)
+  ship.show()
+  ship.move()
 
- for (var i = 0; i < drops.length; i++){
+  for (var i = 0; i < drops.length; i++) {  // loop through all the drops
     drops[i].show()
     drops[i].move()
-
-    for (var j = 0; j < flowers.length; j++){
-       if (drops[i].hits(flowers[j]))  //collision detection
-       console.log("WATERING")
+    for (var j = 0; j < flowers.length; j++) { // while looping through all the drops do a loop through all the flowers
+      if (drops[i].hits(flowers[j])) { // collision detection is true
+        flowers[j].grow() // make flower grow on collision
+        drops[i].evaporate() // remove drop on collision
+      }
     }
- }
+  }
 
- for (var i = 0; i < flowers.length; i++){
-   flowers[i].show()
- }
+  var edge = false // check to see if flowers have hit an edge
 
+  for (var i = 0; i < flowers.length; i++) {
+    flowers[i].show()
+    flowers[i].move()
+    if (flowers[i].x > width || flowers[i].x < 0) { // Determine if line of flowers has hit the edge of screen.
+      edge = true
+    }
+  }
+
+  if (edge) { // if any flowers hit the edge then all the flowers should shift down
+    for (var i = 0; i < flowers.length; i++) {
+      flowers[i].shiftDown()
+    }
+  }
+
+  for (var i = drops.length - 1; i >= 0; i--) { // walk down the array from the end. This is to make sure we dont miss any elements in the array as they get removed.
+    if (drops[i].toDelete) { // if drop is to be deleted then remove from array
+      drops.splice(i, 1) // splice object out of array
+    }
+  }
+
+}
+
+function keyReleased() {
+
+  if (key != ' ') { // as long as key is not space bar then
+    ship.setDir(0) // when a key is released stop moving ship
+  }
 
 }
 
 function keyPressed() {
- if (key === ' '){
-    var drop = new Drop(ship.x,height) // start drop at ships x location
+  if (key === ' ') { // if space bar is pressed the fire water drop
+    var drop = new Drop(ship.x, height) // start drop at ships x location
     drops.push(drop)
- }
-  if (keyCode === RIGHT_ARROW){
-    ship.move(1) // 1 means move to the right
+  }
+  if (keyCode === RIGHT_ARROW) {
+    ship.setDir(1) // 1 means move to the right
   } else if (keyCode === LEFT_ARROW) {
-    ship.move(-1) // -1 move to the left
+    ship.setDir(-1) // -1 move to the left
   }
 }
