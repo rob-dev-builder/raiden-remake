@@ -3,18 +3,24 @@ var flowers = []
 var drops = []
 
 var playerOneImg
+var playerLeftImg
+var playerRightImg
+
 var enemyShipImg
 var playerLaserImg
 
 function preload() { // p5 function used for loading images and sound files
   playerOneImg  = loadImage("objects/images/player.png")
-  enemyShipImg = loadImage("objects/images/enemyShip.png")
+  playerLeftImg  = loadImage("objects/images/playerLeft.png")
+  playerRightImg = loadImage("objects/images/playerRight.png")
   playerLaserImg = loadImage("objects/images/laserRed.png")
+
+  enemyShipImg = loadImage("objects/images/enemyShip.png")
 }
 
 function setup() {
   createCanvas(600, 800)
-  ship = new Ship(playerOneImg)  // create ship object with image
+  ship = new Ship()  // create ship object with image
 
   for (var i = 0; i < 4; i++) { // create an array of flowers
     flowers[i] = new Flower(i * 100 + 80, 60,enemyShipImg)
@@ -26,7 +32,7 @@ function setup() {
 
 function draw() {
   background(51)
-  ship.show()
+  ship.show(playerOneImg)
   ship.move()
 
   for (var i = 0; i < drops.length; i++) {  // loop through all the drops
@@ -78,8 +84,12 @@ function keyPressed() {
     drops.push(drop)
   }
   if (keyCode === RIGHT_ARROW) {
+    console.log('moving right')
+    ship.show(playerRightImg)
     ship.setDir(1) // 1 means move to the right
   } else if (keyCode === LEFT_ARROW) {
+    console.log('moving left')
+    ship.show(playerLeftImg)
     ship.setDir(-1) // -1 move to the left
   }
 }
