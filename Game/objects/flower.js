@@ -1,9 +1,10 @@
-function Flower(x, y) {
+function Flower(x, y, img) {
   // the x and y params allow the program to setup randon locations for the flowers
 
   this.x = x
   this.y = y
   this.r = 30
+  this.img = img
 
   this.xdir = 1
 
@@ -21,9 +22,11 @@ function Flower(x, y) {
   }
 
   this.show = function() {
-    noStroke()
-    fill(255, 0, 200, 150)
-    rectMode(CENTER) // draw rectange via centre
-    ellipse(this.x, this.y, this.r * 2, this.r + 2)
+    // noStroke()
+    // fill(255, 0, 200, 150)
+    // rectMode(CENTER) // draw rectange via centre
+    // ellipse(this.x, this.y, this.r * 2, this.r + 2)
+    imageMode(CENTER)
+    image(img, this.x, this.y)
   }
 }

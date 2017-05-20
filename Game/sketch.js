@@ -2,11 +2,20 @@ var ship
 var flowers = []
 var drops = []
 
+var playerOneImg
+var enemyShipImg
+
+function preload() { // p5 function used for loading images and sound files
+  playerOneImg  = loadImage("objects/images/player.png")
+  enemyShipImg = loadImage("objects/images/enemyShip.png")
+}
+
 function setup() {
-  createCanvas(600, 400)
-  ship = new Ship()
-  for (var i = 0; i < 6; i++) { // create an array of flowers
-    flowers[i] = new Flower(i * 80 + 80, 60)
+  createCanvas(600, 800)
+  ship = new Ship(playerOneImg)  // create ship object with image
+
+  for (var i = 0; i < 4; i++) { // create an array of flowers
+    flowers[i] = new Flower(i * 100 + 80, 60,enemyShipImg)
     // set  width location for flowers
     // the i*80+80 allows the flowers to be evenly spaced out
   }
