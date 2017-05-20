@@ -1,15 +1,17 @@
-function Drop(x, y) {
+function Drop(x, y, img) {
   // the x and y params allow the program to setup randon locations for the drops
 
   this.x = x
   this.y = y
   this.r = 8
+  this.img = img
   this.toDelete = false
 
   this.show = function() {
-    noStroke()
-    fill(150, 0, 200)
-    ellipse(this.x, this.y, this.r * 2, this.r * 2)
+    // noStroke()
+    // fill(150, 0, 200)
+    // ellipse(this.x, this.y, this.r * 2, this.r * 2)
+    image(img, this.x, this.y)
   }
 
   this.evaporate = function() {

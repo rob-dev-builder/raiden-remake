@@ -4,10 +4,12 @@ var drops = []
 
 var playerOneImg
 var enemyShipImg
+var playerLaserImg
 
 function preload() { // p5 function used for loading images and sound files
   playerOneImg  = loadImage("objects/images/player.png")
   enemyShipImg = loadImage("objects/images/enemyShip.png")
+  playerLaserImg = loadImage("objects/images/laserRed.png")
 }
 
 function setup() {
@@ -72,7 +74,7 @@ function keyReleased() {
 
 function keyPressed() {
   if (key === ' ') { // if space bar is pressed the fire water drop
-    var drop = new Drop(ship.x, height) // start drop at ships x location
+    var drop = new Drop(ship.x, height - 100, playerLaserImg) // start drop at ships x location
     drops.push(drop)
   }
   if (keyCode === RIGHT_ARROW) {
