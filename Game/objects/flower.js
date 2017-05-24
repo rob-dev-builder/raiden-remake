@@ -6,10 +6,12 @@ function Flower(x, y, img) {
   this.r = 30
   this.img = img
 
-  this.xdir = 1
+  this.xdir = 2
 
   this.grow = function() {
-    this.r = this.r + 2
+    // this.r = this.r + 2
+    // this.img = null // delete flower on collision
+    console.log('laser beam hit alien')
   }
 
   this.shiftDown = function() {

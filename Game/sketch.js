@@ -22,8 +22,11 @@ function setup() {
   createCanvas(600, 800)
   ship = new Ship()  // create ship object with image
 
-  for (var i = 0; i < 4; i++) { // create an array of flowers
-    flowers[i] = new Flower(i * 100 + 80, 60,enemyShipImg)
+  for (var i = 0; i < 5; i++) { // create an array of flowers
+    let randomHeight = random(-200, 100)
+    let randomWidth = random(0,300)
+    flowers[i] = new Flower(randomWidth, randomHeight,enemyShipImg) // create flowers with random height
+    // flowers[i] = new Flower(i * 80 + 90, randomHeight,enemyShipImg) // create flowers with random height
     // set  width location for flowers
     // the i*80+80 allows the flowers to be evenly spaced out
   }
@@ -42,6 +45,8 @@ function draw() {
       if (drops[i].hits(flowers[j])) { // collision detection is true
         flowers[j].grow() // make flower grow on collision
         drops[i].evaporate() // remove drop on collision
+        flowers.splice(0,1) // remove flower from array (destroyed)
+        console.log('length of flowers '+ flowers.length)
       }
     }
   }
