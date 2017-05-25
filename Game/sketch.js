@@ -20,9 +20,11 @@ function preload() { // p5 function used for loading images and sound files
 
 function setup() {
   createCanvas(600, 800)
-  ship = new Ship()  // create ship object with image
+   ship = new Ship()  // create ship object with image
 
-  for (var i = 0; i < 5; i++) { // create an array of flowers
+let randomAmountOfEnemys = random(2,20)
+
+  for (var i = 0; i < randomAmountOfEnemys; i++) { // create an array of flowers
     let randomHeight = random(-200, 100)
     let randomWidth = random(0,300)
     flowers[i] = new Flower(randomWidth, randomHeight,enemyShipImg) // create flowers with random height
@@ -97,4 +99,8 @@ function keyPressed() {
     ship.show(playerLeftImg)
     ship.setDir(-1) // -1 move to the left
   }
+
+
+
+
 }
