@@ -20,3 +20,6 @@ Notes For converting to ES6:
 Destructuring
 http://wesbos.com/destructuring-objects/
 http://exploringjs.com/es6/ch_destructuring.html
+
+Process of converting to ES6
+ 1. replacing var with let and const

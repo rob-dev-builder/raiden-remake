@@ -1,13 +1,13 @@
-var ship
-var enemyWave = []
-var playerLasers = []
+let ship
+let enemyWave = []
+let playerLasers = []
 
-var playerOneImg
-var playerLeftImg
-var playerRightImg
+let playerOneImg
+let playerLeftImg
+let playerRightImg
 
-var enemyShipImg
-var playerLaserImg
+let enemyShipImg
+let playerLaserImg
 
 function preload() { // p5 function used for loading images and sound files
   playerOneImg = loadImage("objects/images/player.png")
@@ -24,7 +24,7 @@ function setup() {
 
   let randomAmountOfEnemys = random(2, 20)
 
-  for (var i = 0; i < randomAmountOfEnemys; i++) { // create an array of Enemy1s
+  for (let i = 0; i < randomAmountOfEnemys; i++) { // create an array of Enemy1s
     let randomHeight = random(-200, 100)
     let randomWidth = random(0, 300)
     enemyWave[i] = new Enemy1(randomWidth, randomHeight, enemyShipImg) // create enemyWave with random height
@@ -40,10 +40,10 @@ function draw() {
   ship.show(playerOneImg)
   ship.move()
 
-  for (var i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
+  for (let i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
     playerLasers[i].show()
     playerLasers[i].move()
-    for (var j = 0; j < enemyWave.length; j++) { // while looping through all the playerLasers do a loop through all the enemyWave
+    for (let j = 0; j < enemyWave.length; j++) { // while looping through all the playerLasers do a loop through all the enemyWave
       if (playerLasers[i].hits(enemyWave[j])) { // collision detection is true
         enemyWave[j].grow() // make Enemy1 grow on collision
         playerLasers[i].evaporate() // remove playerLaser on collision
@@ -53,9 +53,9 @@ function draw() {
     }
   }
 
-  var edge = false // check to see if enemyWave have hit an edge
+  let edge = false // check to see if enemyWave have hit an edge
 
-  for (var i = 0; i < enemyWave.length; i++) {
+  for (let i = 0; i < enemyWave.length; i++) {
     enemyWave[i].show()
     enemyWave[i].move()
     if (enemyWave[i].x > width || enemyWave[i].x < 0) { // Determine if line of enemyWave has hit the edge of screen.
@@ -64,12 +64,12 @@ function draw() {
   }
 
   if (edge) { // if any enemyWave hit the edge then all the enemyWave should shift down
-    for (var i = 0; i < enemyWave.length; i++) {
+    for (let i = 0; i < enemyWave.length; i++) {
       enemyWave[i].shiftDown()
     }
   }
 
-  for (var i = playerLasers.length - 1; i >= 0; i--) { // walk down the array from the end. This is to make sure we dont miss any elements in the array as they get removed.
+  for (let i = playerLasers.length - 1; i >= 0; i--) { // walk down the array from the end. This is to make sure we dont miss any elements in the array as they get removed.
     if (playerLasers[i].toDelete) { // if playerLaser is to be deleted then remove from array
       playerLasers.splice(i, 1) // splice object out of array
     }
@@ -87,7 +87,7 @@ function keyReleased() {
 
 function keyPressed() {
   if (key === ' ') { // if space bar is pressed the fire water playerLaser
-    var playerLaser = new PlayerLaser(ship.x, height - 100, playerLaserImg) // start playerLaser at ships x location
+    let playerLaser = new PlayerLaser(ship.x, height - 100, playerLaserImg) // start playerLaser at ships x location
     playerLasers.push(playerLaser)
   }
   if (keyCode === RIGHT_ARROW) {
