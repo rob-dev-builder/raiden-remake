@@ -1,5 +1,5 @@
-function Flower(x, y, img) {
-  // the x and y params allow the program to setup randon locations for the flowers
+function Enemy1(x, y, img) {
+  // the x and y params allow the program to setup randon locations for the Enemy1
 
   this.x = x
   this.y = y
@@ -10,7 +10,7 @@ function Flower(x, y, img) {
 
   this.grow = function() {
     // this.r = this.r + 2
-    // this.img = null // delete flower on collision
+    // this.img = null // delete Enemy1 on collision
     console.log('laser beam hit alien')
   }
 

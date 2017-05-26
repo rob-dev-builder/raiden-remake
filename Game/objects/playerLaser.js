@@ -1,4 +1,4 @@
-function Drop(x, y, img) {
+function PlayerLaser(x, y, img) {
   // the x and y params allow the program to setup randon locations for the drops
 
   this.x = x

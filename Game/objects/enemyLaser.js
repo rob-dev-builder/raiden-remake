@@ -18,9 +18,9 @@ function EnemyLaser(x, y, img) {
   this.hits = function(player) { // determine the distance between enemy laser and player for collision detection
     var d = dist(this.x, this.y, player.x, player.y) // get the distance between enemy laser and player object
     if (d < this.r + player.r) { // if distance between enemy laser and player radius is less than distance then return true
-      return true  // collision detected
+      return true // collision detected
     } else {
-      return false  // no collision detected
+      return false // no collision detected
     }
 
   }
