@@ -19,7 +19,7 @@ function PlayerLaser(x, y, img) {
   }
 
   this.hits = function(flower) { // determine the distance between drop and flower for collision detection
-    var d = dist(this.x, this.y, flower.x, flower.y) // get the distance between drop and flower object
+    let d = dist(this.x, this.y, flower.x, flower.y) // get the distance between drop and flower object
     if (d < this.r + flower.r) { // if distance between drop and flower radius is less than distance then return true
       return true  // collision detected
     } else {
