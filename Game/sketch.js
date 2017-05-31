@@ -2,7 +2,6 @@ let ship
 let enemyWave = []
 let playerLasers = []
 
-
 let playerOneImg
 let playerLeftImg
 let playerRightImg
@@ -11,7 +10,6 @@ let enemyShipImg
 let playerLaserImg
 
 let stars = []
-
 
 function preload() { // p5 function used for loading images and sound files
   playerOneImg = loadImage("objects/images/player.png")
@@ -31,7 +29,12 @@ function setup() {
   for (let i = 0; i < randomAmountOfEnemys; i++) { // create an array of Enemy1s
     let randomHeight = random(10, 100)
     let randomWidth = random(0, 300)
-    enemyWave[i] = new Enemy1(i * 90 + 90, randomHeight,enemyShipImg) // create enemyWave with random height
+    enemyWave[i] = new Enemy1(i * 90 + 90, randomHeight, enemyShipImg) // create enemyWave with random height
+  }
+
+  // code for stars
+  for (let i = 0; i < 100; i++) {
+    stars[i] = new Star()
   }
 
 }
@@ -41,9 +44,13 @@ function draw() {
   ship.show(playerOneImg)
   ship.move()
 
+  for (let i = 0; i < stars.length; i++) {
+      stars[i].show()
+      stars[i].move()
+  }
 
   for (let i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
-  // for (let laser of playerLasers) { // loop through all the playerLasers
+    // for (let laser of playerLasers) { // loop through all the playerLasers
     playerLasers[i].show()
     playerLasers[i].move()
     for (let j = 0; j < enemyWave.length; j++) { // while looping through all the playerLasers do a loop through all the enemyWave
@@ -76,15 +83,6 @@ function draw() {
     if (playerLasers[i].toDelete) { // if playerLaser is to be deleted then remove from array
       playerLasers.splice(i, 1) // splice object out of array
     }
-  }
-
- // code for stars
-  // speed = map(mouseX, 0, width, 0, 50);
-  // translate(width / 2, height / 2);
-  for (let i = 0; i < 100; i++) {
-    stars[i] = new Star
-    // stars[i].move();
-    stars[i].show();
   }
 
 }
