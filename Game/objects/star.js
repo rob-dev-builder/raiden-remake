@@ -7,8 +7,13 @@ function Star() {
    this.ydir = 5
 
   this.move = function() {
-      this.y = this.y + this.ydir
-      // if this.y = height then set height back to 0 again. This should 'recycle' stars back to top of screen
+      // Check if star has reached the end of the screen. If it has then move back to top of screen.
+      // Else move the start down the screen
+      if (this.y >= height){
+        this.y = 0
+      } else{
+        this.y = this.y + this.ydir
+      }
   }
 
   this.show = function() {

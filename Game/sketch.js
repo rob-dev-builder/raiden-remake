@@ -1,3 +1,8 @@
+// x --> 0 in the top left corner. Horizontal.
+// y | 0 in the top left corner. Vertical.
+//   V
+
+
 let ship
 let enemyWave = []
 let playerLasers = []
