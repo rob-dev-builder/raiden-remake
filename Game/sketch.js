@@ -26,7 +26,7 @@ function setup() {
   createCanvas(600, 800)
   ship = new Ship() // create ship object with image
 
-  let randomAmountOfEnemys = random(0, 1)
+  let randomAmountOfEnemys = random(0, 5) // create a random amount of enemys from 0 to x
 
   for (let i = 0; i < randomAmountOfEnemys; i++) { // create an array of Enemy1s
     let randomHeight = random(10, 100)
@@ -37,10 +37,9 @@ function setup() {
 }
 
 function draw() {
-  background(51)
+  background(0)
   ship.show(playerOneImg)
   ship.move()
-
 
 
   for (let i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
