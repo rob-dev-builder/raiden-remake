@@ -6,7 +6,7 @@ function Ship() {
 
   this.show = function(img) {
     imageMode(CENTER) // this is a p5 function. draw image via centre
-    image(img, this.x, height - 50) // ship is positioned at bottom 50 px up.
+    image(img, this.x, height - 100) // ship is positioned at bottom 50 px up.
   }
 
   // this function receives a value and sets this objects x direction to that value

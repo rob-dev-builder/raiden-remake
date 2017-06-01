@@ -17,8 +17,8 @@ function Star() {
   }
 
   this.show = function() {
-    fill(255);
+    fill(250);
     noStroke();
-    ellipse(this.x, this.y, 5, 5)
+    ellipse(this.x, this.y, 2, 2)
   }
 }

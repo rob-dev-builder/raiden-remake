@@ -2,7 +2,6 @@
 // y | 0 in the top left corner. Vertical.
 //   V
 
-
 let ship
 let enemyWave = []
 let playerLasers = []
@@ -26,7 +25,7 @@ function preload() { // p5 function used for loading images and sound files
 }
 
 function setup() {
-  createCanvas(600, 800)
+  createCanvas(700, 900)
   ship = new Ship() // create ship object with image
 
   let randomAmountOfEnemys = random(0, 5) // create a random amount of enemys from 0 to x
@@ -101,8 +100,8 @@ function keyReleased() {
 }
 
 function keyPressed() {
-  if (key === ' ') { // if space bar is pressed the fire water playerLaser
-    let playerLaser = new PlayerLaser(ship.x, height - 100, playerLaserImg) // start playerLaser at ships x location
+  if (key === ' ') { // if space bar is pressed the fire laser
+    let playerLaser = new PlayerLaser(ship.x, height - 150, playerLaserImg) // start playerLaser at ships x location
     playerLasers.push(playerLaser)
   }
   if (keyCode === RIGHT_ARROW) {

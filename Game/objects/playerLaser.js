@@ -1,5 +1,4 @@
 function PlayerLaser(x, y, img) {
-  // the x and y params allow the program to setup randon locations for the drops
 
   this.x = x
   this.y = y
@@ -20,7 +19,7 @@ function PlayerLaser(x, y, img) {
 
   this.hits = function(flower) { // determine the distance between drop and flower for collision detection
     let d = dist(this.x, this.y, flower.x, flower.y) // get the distance between drop and flower object
-    if (d < this.r + flower.r) { // if distance between drop and flower radius is less than distance then return true
+    if (d < this.r + flower.r) { // if distance between laser and enemy is less than distance then return true
       return true  // collision detected
     } else {
       return false  // no collision detected
@@ -28,6 +27,6 @@ function PlayerLaser(x, y, img) {
 
   }
   this.move = function(dir) {
-    this.y = this.y - 5 // move drop speed
+    this.y = this.y - 5 // move laser speed
   }
 }
