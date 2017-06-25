@@ -1,53 +1,93 @@
-var ship
-var flowers = []
-var drops = []
+// x --> 0 in the top left corner. Horizontal.
+// y | 0 in the top left corner. Vertical.
+//   V
+
+let ship
+let enemyWave = []
+let playerLasers = []
+
+let playerOneImg
+let playerLeftImg
+let playerRightImg
+
+let enemyShipImg
+let playerLaserImg
+
+let stars = []
+
+function preload() { // p5 function used for loading images and sound files
+  playerOneImg = loadImage("objects/images/player.png")
+  playerLeftImg = loadImage("objects/images/playerLeft.png")
+  playerRightImg = loadImage("objects/images/playerRight.png")
+  playerLaserImg = loadImage("objects/images/laserRed.png")
+
+  enemyShipImg = loadImage("objects/images/enemyShip.png")
+
+  // playerLaserShootSound = loadSound("objects/sounds/player_laser_gun_shot.wav");
+}
 
 function setup() {
-  createCanvas(600, 400)
-  ship = new Ship()
-  for (var i = 0; i < 6; i++) { // create an array of flowers
-    flowers[i] = new Flower(i * 80 + 80, 60)
-    // set  width location for flowers
-    // the i*80+80 allows the flowers to be evenly spaced out
+  createCanvas(700, 900)
+  ship = new Ship() // create ship object with image
+
+  let randomAmountOfEnemys = random(0, 5) // create a random amount of enemys from 0 to x
+
+  for (let i = 0; i < randomAmountOfEnemys; i++) { // create an array of Enemy1s
+    let randomHeight = random(10, 100)
+    let randomWidth = random(0, 300)
+    enemyWave[i] = new Enemy1(i * 90 + 90, randomHeight, enemyShipImg) // create enemyWave with random height
+  }
+
+  // code for stars
+  for (let i = 0; i < 100; i++) {
+    stars[i] = new Star()
   }
 
 }
 
 function draw() {
-  background(51)
-  ship.show()
+  background(0)
+  ship.show(playerOneImg)
   ship.move()
 
-  for (var i = 0; i < drops.length; i++) {  // loop through all the drops
-    drops[i].show()
-    drops[i].move()
-    for (var j = 0; j < flowers.length; j++) { // while looping through all the drops do a loop through all the flowers
-      if (drops[i].hits(flowers[j])) { // collision detection is true
-        flowers[j].grow() // make flower grow on collision
-        drops[i].evaporate() // remove drop on collision
+  for (let i = 0; i < stars.length; i++) {
+      stars[i].show()
+      stars[i].move()
+  }
+
+  for (let i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
+    // for (let laser of playerLasers) { // loop through all the playerLasers
+    playerLasers[i].show()
+    playerLasers[i].move()
+    for (let j = 0; j < enemyWave.length; j++) { // while looping through all the playerLasers do a loop through all the enemyWave
+      if (playerLasers[i].hits(enemyWave[j])) { // collision detection is true
+        enemyWave[j].grow() // make Enemy1 grow on collision
+        playerLasers[i].evaporate() // remove playerLaser on collision
+        enemyWave.splice(0, 1) // remove Enemy1 from array (destroyed)
+        console.log('length of enemyWave ' + enemyWave.length)
       }
     }
   }
 
-  var edge = false // check to see if flowers have hit an edge
+  let edge = false // check to see if enemyWave have hit an edge
 
-  for (var i = 0; i < flowers.length; i++) {
-    flowers[i].show()
-    flowers[i].move()
-    if (flowers[i].x > width || flowers[i].x < 0) { // Determine if line of flowers has hit the edge of screen.
+  for (let i = 0; i < enemyWave.length; i++) {
+    enemyWave[i].show()
+    enemyWave[i].move()
+    if (enemyWave[i].x > width || enemyWave[i].x < 0) { // Determine if line of enemyWave has hit the edge of screen.
       edge = true
     }
   }
 
-  if (edge) { // if any flowers hit the edge then all the flowers should shift down
-    for (var i = 0; i < flowers.length; i++) {
-      flowers[i].shiftDown()
+  if (edge) { // if any enemyWave hit the edge then all the enemyWave should shift down
+    for (let i = 0; i < enemyWave.length; i++) {
+      enemyWave[i].shiftDown()
     }
   }
 
-  for (var i = drops.length - 1; i >= 0; i--) { // walk down the array from the end. This is to make sure we dont miss any elements in the array as they get removed.
-    if (drops[i].toDelete) { // if drop is to be deleted then remove from array
-      drops.splice(i, 1) // splice object out of array
+  for (let i = playerLasers.length - 1; i >= 0; i--) { // walk down the array from the end. This is to make sure we dont miss any elements in the array as they get removed.
+    if (playerLasers[i].toDelete) { // if playerLaser is to be deleted then remove from array
+      playerLasers.splice(i, 1) // splice object out of array
     }
   }
 
@@ -62,13 +102,19 @@ function keyReleased() {
 }
 
 function keyPressed() {
-  if (key === ' ') { // if space bar is pressed the fire water drop
-    var drop = new Drop(ship.x, height) // start drop at ships x location
-    drops.push(drop)
+  if (key === ' ') { // if space bar is pressed the fire laser
+    let playerLaser = new PlayerLaser(ship.x, height - 150, playerLaserImg) // start playerLaser at ships x location
+    // playerLaserShootSound.play()
+    playerLasers.push(playerLaser)
   }
   if (keyCode === RIGHT_ARROW) {
+    console.log('moving right')
+    ship.show(playerRightImg)
     ship.setDir(1) // 1 means move to the right
   } else if (keyCode === LEFT_ARROW) {
+    console.log('moving left')
+    ship.show(playerLeftImg)
     ship.setDir(-1) // -1 move to the left
   }
+
 }

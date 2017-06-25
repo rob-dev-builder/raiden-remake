@@ -1,0 +1,32 @@
+Notes For converting to ES6:
+  using modules (instead of having to load each object js file in the index.html)
+  Read more about using modules towards the end of this page:
+  https://pohutukawa-2017-book.herokuapp.com/phase2/week4/monday.html
+  More information here:
+  https://hacks.mozilla.org/2015/08/es6-in-depth-modules/
+
+  Also, look at replacing var with let and const.
+  Read more about how to use these types of variable declarations here:
+  https://hacks.mozilla.org/2015/07/es6-in-depth-let-and-const/
+  https://pohutukawa-2017-book.herokuapp.com/phase2/week4/monday.html
+
+      Use const on variables that do not change
+        If you use const when declaring an object you can still change the properties on the object.
+
+      Use let on vairables that will change
+
+  Using Const whenever you can helps minimize mutable state
+
+  Look at using arrow functions to replace anonymous functions
+  https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/
+
+  Concatentating strings:
+  https://hacks.mozilla.org/2015/05/es6-in-depth-template-strings-2/
+
+
+Destructuring
+http://wesbos.com/destructuring-objects/
+http://exploringjs.com/es6/ch_destructuring.html
+
+Process of converting to ES6
+ 1. replacing var with let and const
