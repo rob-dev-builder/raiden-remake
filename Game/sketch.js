@@ -22,6 +22,8 @@ function preload() { // p5 function used for loading images and sound files
   playerLaserImg = loadImage("objects/images/laserRed.png")
 
   enemyShipImg = loadImage("objects/images/enemyShip.png")
+
+  // playerLaserShootSound = loadSound("objects/sounds/player_laser_gun_shot.wav");
 }
 
 function setup() {
@@ -102,6 +104,7 @@ function keyReleased() {
 function keyPressed() {
   if (key === ' ') { // if space bar is pressed the fire laser
     let playerLaser = new PlayerLaser(ship.x, height - 150, playerLaserImg) // start playerLaser at ships x location
+    // playerLaserShootSound.play()
     playerLasers.push(playerLaser)
   }
   if (keyCode === RIGHT_ARROW) {

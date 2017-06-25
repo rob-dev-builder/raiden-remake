@@ -1,14 +1,12 @@
 function Star() {
   this.x = random(-width, width);
   this.y = random(-height, height);
-  // this.x = 300
-  // this.y = 400
 
    this.ydir = 5
 
   this.move = function() {
       // Check if star has reached the end of the screen. If it has then move back to top of screen.
-      // Else move the start down the screen
+      // Else move the star down the screen.
       if (this.y >= height){
         this.y = 0
       } else{
