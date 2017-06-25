@@ -1,7 +1,19 @@
-# raiden-remake
+# Raiden Remake
 EDA Personal Project - Raiden Game
 
-Goals of this project.
+
+### Setup:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Installing 
+
+After you have pulled down the repo:
+
+```
+cd raiden-remake
+```
+
+# Goals of this project.
 - Create a raiden like game: https://www.youtube.com/watch?v=Xe_5zxXiQAs 
 - Will use a Daniel Shiffman P5.js space invader example. https://www.youtube.com/watch?v=biN3v3ef-Y0&t=1212s
 - Have a solid understanding of how the code works
