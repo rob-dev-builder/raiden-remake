@@ -12,6 +12,7 @@ After you have pulled down the repo:
 
 ```
 cd raiden-remake
+npm start
 ```
 
 # Goals of this project.
