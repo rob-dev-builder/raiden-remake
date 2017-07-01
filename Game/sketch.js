@@ -16,11 +16,10 @@ let playerLaserImg
 let stars = []
 
 function preload() { // p5 function used for loading images and sound files
-  playerOneImg = loadImage("objects/images/player.png")
-  playerLeftImg = loadImage("objects/images/playerLeft.png")
-  playerRightImg = loadImage("objects/images/playerRight.png")
-  playerLaserImg = loadImage("objects/images/laserRed.png")
-
+  playerOneImg = loadImage('objects/images/player.png')
+  playerLeftImg = loadImage('objects/images/playerLeft.png')
+  playerRightImg = loadImage('objects/images/playerRight.png')
+  playerLaserImg = loadImage('objects/images/laserRed.png')
   enemyShipImg = loadImage("objects/images/enemyShip.png")
 
   // playerLaserShootSound = loadSound("objects/sounds/player_laser_gun_shot.wav");
@@ -45,14 +44,14 @@ function setup() {
 
 }
 
-function draw() {
+function draw () {
   background(0)
   ship.show(playerOneImg)
   ship.move()
 
   for (let i = 0; i < stars.length; i++) {
-      stars[i].show()
-      stars[i].move()
+    stars[i].show()
+    stars[i].move()
   }
 
   for (let i = 0; i < playerLasers.length; i++) { // loop through all the playerLasers
@@ -93,7 +92,7 @@ function draw() {
 
 }
 
-function keyReleased() {
+function keyReleased () {
 
   if (key != ' ') { // as long as key is not space bar then
     ship.setDir(0) // when a key is released stop moving ship
@@ -101,7 +100,7 @@ function keyReleased() {
 
 }
 
-function keyPressed() {
+function keyPressed () {
   if (key === ' ') { // if space bar is pressed the fire laser
     let playerLaser = new PlayerLaser(ship.x, height - 150, playerLaserImg) // start playerLaser at ships x location
     // playerLaserShootSound.play()
